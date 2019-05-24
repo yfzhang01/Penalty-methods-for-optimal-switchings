@@ -16,6 +16,10 @@ n=(x_max-x_min)/dx;
 x=[x_min:dx:x_max-dx]';
 
 
+pi=@(x) max(x,0);
+pi_dev=@(x) 1.*(x>0);
+
+
 %BC: u=0 at x=x_max.
 % u_xx central difference
 e=ones(n,1); 
@@ -77,7 +81,7 @@ while err_n> tol
         u_old=u; 
 end
 
-%% output
+% output
 res1=u;
 res2=itr_n;
 res3=toc;
