@@ -36,7 +36,7 @@ L=[B1,sparse(n,n);sparse(n,n), A2+B2]; % combined generator
 lambda=r*speye(2*n,2*n);
 A=L+lambda;
 
-%% source
+% source
 
 l= ((-2)*(x-1).*(x>0.75).*(x<=1)); %
 %
@@ -46,7 +46,7 @@ l=[l;l];
 u_old=A\l; 
 
 
-%% policy iteration
+% policy iteration
 
 tol=10^(-9); 
 err=1; itr_n=0;
@@ -57,7 +57,7 @@ while err> tol
     
     G_old=A*u_old-rho*p_old-l;
     
-% % linear penality
+    % linear penality
     P11=spdiags(-1*((u_old(n+1:2*n)-c-u_old(1:n))>0),0,n,n);
     P12=spdiags(1*((u_old(n+1:2*n)-c-u_old(1:n))>0),0,n,n);
     P21=spdiags(1*((u_old(1:n)-c-u_old(n+1:2*n))>0),0,n,n);
@@ -70,7 +70,7 @@ while err> tol
     u_old=u; 
 end
 
-%% output
+% output
 
 res1=u;  % the value function
 res2=itr_n; % the total iterations
